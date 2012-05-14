@@ -47,7 +47,7 @@
  * Copyright (c) 2012 Almende B.V.
  *
  * @author 	Jos de Jong, <jos@almende.org>
- * @date	  2012-05-11
+ * @date	  2012-05-14
  */
 
 package com.almende.util;
@@ -177,7 +177,7 @@ public class HttpUtil {
 	 * @throws IOException 
 	 */
 	static public String put(String url, String body) throws IOException {
-		return put(url, body);
+		return put(url, body, null);
 	}
 	
 	/**
