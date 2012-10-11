@@ -303,43 +303,43 @@ public class HttpUtil {
 			Map<String, String> headers) throws IOException {
 		// connection
 		URL u = new URL(url);
-	    HttpURLConnection conn = (HttpURLConnection)u.openConnection();
-	    conn.setConnectTimeout(10000);
-	    conn.setReadTimeout(10000);
+		HttpURLConnection conn = (HttpURLConnection)u.openConnection();
+		conn.setConnectTimeout(10000);
+		conn.setReadTimeout(10000);
 
-	    // method
-	    if (method != null) {
-	    	conn.setRequestMethod(method);
-	    }
+		// method
+		if (method != null) {
+			conn.setRequestMethod(method);
+		}
 
-	    // headers
-	    if (headers != null) {
-	    	for(String key : headers.keySet()) {
-	    		conn.addRequestProperty(key, headers.get(key));
-	    	}
-	    }
+		// headers
+		if (headers != null) {
+			for(String key : headers.keySet()) {
+				conn.addRequestProperty(key, headers.get(key));
+			}
+		}
 
-	    // body
-	    if (body != null) {
-		    conn.setDoOutput(true);
-		    OutputStream os = conn.getOutputStream();
+		// body
+		if (body != null) {
+			conn.setDoOutput(true);
+			OutputStream os = conn.getOutputStream();
 			os.write(body.getBytes());
 			os.flush();
 			os.close();
-	    }
-	    
-	    // response
-	    InputStream is = conn.getInputStream();
-	    String response = streamToString(is);
-	    is.close();
-	    
-	    // handle redirects
-	    if (conn.getResponseCode() == 301) {
-	    	String location = conn.getHeaderField("Location");
-	    	return fetch(method, location, body, headers);
-	    }
-	    
-	    return response;
+		}
+		
+		// response
+		InputStream is = conn.getInputStream();
+		String response = streamToString(is);
+		is.close();
+		
+		// handle redirects
+		if (conn.getResponseCode() == 301) {
+			String location = conn.getHeaderField("Location");
+			return fetch(method, location, body, headers);
+		}
+		
+		return response;
 	}
 	
 	/**
