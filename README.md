@@ -11,7 +11,7 @@ and supports posting forms. Optionally, one can provide headers.
 
 ## Usage
 
-Insert the class [HttpUtil.java](https://raw.github.com/wjosdejong/httputil/master/src/com/almende/util/HttpUtil.java) in your project.
+Insert the class [HttpUtil.java](https://raw.github.com/josdejong/httputil/master/src/com/almende/util/HttpUtil.java) in your project.
 
 Next, the HttpUtil methods can called statically. An GET request looks like:
 
