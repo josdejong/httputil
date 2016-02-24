@@ -211,11 +211,6 @@ public class HttpUtil {
 	 */
 	static public String appendQueryParams(String url, 
 			Map<String, String> params) throws IOException {
-		//Don`t do this forever
-		//String fullUrl = new String(url);
-		//do like this 
-		//StringBuilder sb = new StringBuilder(url);
-		//or like this
 		String fullUrl = url;
 		if (params != null) {
 			boolean first = (fullUrl.indexOf('?') == -1);
