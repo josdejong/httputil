@@ -111,6 +111,19 @@ public class HttpUtil {
 		return post(url, body, null);
 	}
 
+    /**
+     * Post a json string
+     * @param url         Url as string
+     * @param jsonStr     a json string
+     * @return response   Response as string
+     * @throws IOException
+     */
+    static public String postJson(String url, String jsonStr) throws IOException {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json;charset=UTF-8");
+        return post(url, jsonStr, headers);
+    }
+
 	/**
 	 * Post a form with parameters
 	 * @param url         Url as string
