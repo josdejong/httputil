@@ -52,8 +52,10 @@
 
 package com.almende.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -329,7 +331,7 @@ public class HttpUtil {
 		
 		// response
 		InputStream is = conn.getInputStream();
-		String response = streamToString(is);
+		String response = streamToString(conn);
 		is.close();
 		
 		// handle redirects
@@ -340,19 +342,24 @@ public class HttpUtil {
 		
 		return response;
 	}
-	
+
 	/**
-	 * Read an input stream into a string
-	 * @param in
+	 * Read an input stream from conn into a string
+	 * @param conn
 	 * @return
 	 * @throws IOException
 	 */
-	static public String streamToString(InputStream in) throws IOException {
-		StringBuffer out = new StringBuffer();
-		byte[] b = new byte[4096];
-		for (int n; (n = in.read(b)) != -1;) {
-			out.append(new String(b, 0, n));
+	static public String streamToString(HttpURLConnection conn) throws IOException {
+		InputStream in = conn.getInputStream();
+		InputStreamReader isr = new InputStreamReader(in, "UTF-8");
+		BufferedReader br = new BufferedReader(isr);
+
+		String data;
+		StringBuilder out = new StringBuilder();
+		while ((data = br.readLine()) != null) {
+			out.append(data);
 		}
+		br.close();
 		return out.toString();
 	}
 }
