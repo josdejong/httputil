@@ -318,8 +318,8 @@ public class HttpUtil {
 		// connection
 		URL u = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection)u.openConnection();
-		conn.setConnectTimeout(10000);
-		conn.setReadTimeout(10000);
+		conn.setConnectTimeout(120000);
+		conn.setReadTimeout(120000);
 
 		// method
 		if (method != null) {
