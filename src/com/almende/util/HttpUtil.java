@@ -344,8 +344,7 @@ public class HttpUtil {
 		
 		// response
 		InputStream is = conn.getInputStream();
-		String response = streamToString(conn);
-		is.close();
+		String response = streamToString(is);
 		
 		// handle redirects
 		if (conn.getResponseCode() == 301) {
@@ -358,12 +357,11 @@ public class HttpUtil {
 
 	/**
 	 * Read an input stream from conn into a string
-	 * @param conn
+	 * @param in
 	 * @return
 	 * @throws IOException
 	 */
-	static public String streamToString(HttpURLConnection conn) throws IOException {
-		InputStream in = conn.getInputStream();
+	static public String streamToString(InputStream in) throws IOException {
 		InputStreamReader isr = new InputStreamReader(in, "UTF-8");
 		BufferedReader br = new BufferedReader(isr);
 
