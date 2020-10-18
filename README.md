@@ -25,7 +25,7 @@ Next, the HttpUtil methods can called statically. An GET request looks like:
     // POST
     String res = HttpUtil.post("http://sendmedata.com", "This is the data");
     
-    //POST JSON
+    // POST JSON
     String json = "{\"firstname\":\"Joe\",\"lastname\":\"Smith\",\"age\":\"28\"}";
     String res = HttpUtil.postJson("http://sendmedata.com", json);
     
