@@ -25,6 +25,10 @@ Next, the HttpUtil methods can called statically. An GET request looks like:
     // POST
     String res = HttpUtil.post("http://sendmedata.com", "This is the data");
     
+    //POST JSON
+    String json = "{\"firstname\":\"Joe\",\"lastname\":\"Smith\",\"age\":\"28\"}";
+    String res = HttpUtil.postJson("http://sendmedata.com", json);
+    
     // POST FORM
     Map<String, String> params = new HashMap<String, String>();
     params.put("firstname", "Joe");
@@ -49,6 +53,8 @@ HttpUtil contains the following static methods:
     
     String post(String url, String body)
     String post(String url, String body, Map<String, String> headers)
+    
+    String postJson(String url, String jsonStr)
     
     String postForm(String url, Map<String, String> params)
     String postForm(String url, Map<String, String> params, Map<String, String> headers)
